@@ -78,3 +78,71 @@ plt.figure(figsize=(8,8))
 plt.imshow(img)
 
 
+############## 3 img Region Of Interest 
+img=cv2.imread('E:\\spyder_workfiles\\test0\\image_algorithm\\roi.jpg')
+plt.imshow(img)
+plt.show()
+ # covert to RGB
+img_rgb=cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+plt.imshow(img_rgb)
+plt.show()
+
+# get ROI 
+ball=img_rgb[230:260,90:140].copy()
+old=img_rgb[240:270,350:400].copy()
+
+# copy the ball region  to another region
+img_rgb[240:270,350:400]=ball
+plt.imshow(img_rgb)
+plt.show()
+# regain the covered region
+img_rgb[240:270,350:400]=old
+plt.imshow(img_rgb)
+plt.show()
+
+############## 4 img split RGB AND merge RGB  ,  Index r g b 
+img=cv2.imread('E:\\spyder_workfiles\\test0\\image_algorithm\\roi.jpg')
+plt.imshow(img)
+plt.show()
+
+# split ,merge method
+b,g,r=cv2.split(img)
+img2=cv2.merge((r,g,b))  # result =  cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+plt.imshow(img2)
+plt.show()
+
+# Index method
+r=img[:,:,2]
+g=img[:,:,1]
+b=img[:,:,0]
+
+############## 5 img  copyMakeBorder  , making borders for image (padding)
+
+img=cv2.imread('E:\\spyder_workfiles\\test0\\image_algorithm\\space3.jpg')
+plt.imshow(img)
+plt.show()
+
+colr=[255,0,255]
+
+img1=cv2.copyMakeBorder(img,5,10,5,10,cv2.BORDER_CONSTANT,value=colr) # 固定颜色padding
+img2=cv2.copyMakeBorder(img,10,10,20,20,cv2.BORDER_REFLECT) # 边缘对称，重复最外边一次
+img3=cv2.copyMakeBorder(img,12,34,12,32,cv2.BORDER_REFLECT_101)# 边缘对称，不重复最外边
+img4=cv2.copyMakeBorder(img,15,15,10,10,cv2.BORDER_REPLICATE)# 边缘拉伸
+shp_lr=img.shape[1] ;shp_ud=img.shape[0]
+img5=cv2.copyMakeBorder(img,shp_ud,shp_ud,shp_lr,shp_lr,cv2.BORDER_WRAP) # 图片平铺（只留所需宽度的像素）
+
+plt.figure(figsize=(15,10))
+plt.subplot(2,3,1)
+plt.imshow(img);plt.title('original')
+plt.subplot(2,3,2)
+plt.imshow(img1);plt.title('constant')
+plt.subplot(2,3,3)
+plt.imshow(img2);plt.title('reflect')
+plt.subplot(2,3,4)
+plt.imshow(img3);plt.title('reflect 101')
+plt.subplot(2,3,5)
+plt.imshow(img4);plt.title('replicate')
+plt.subplot(2,3,6)
+plt.imshow(img5);plt.title('wrap')
+plt.show()
+
