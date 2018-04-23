@@ -16,4 +16,4 @@ This contains the following application scenarios:
 algorithms:
 1. 图片相似度 :颜色直方图  color-histogram  
 2. 图片相似度 :尺度不变特征转换 SIFT ,SURF  
-3. 文字识别  ：  
+3. 文字识别  ： OCR   pytessoract
