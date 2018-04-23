@@ -11,9 +11,11 @@ This contains the following application scenarios:
 5 . 目标跟踪 ，模式识别  
 6 . 颜色识别  
 7 . 物体识别  
+8 . 去水印
 
 
 algorithms:
 1. 图片相似度 :颜色直方图  color-histogram  
 2. 图片相似度 :尺度不变特征转换 SIFT ,SURF  
 3. 文字识别  ： OCR   pytessoract
+4. 图像修复 ：TM_CCOEFF
