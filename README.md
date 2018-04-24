@@ -18,4 +18,6 @@ algorithms:
 1. 图片相似度 :颜色直方图  color-histogram  
 2. 图片相似度 :尺度不变特征转换 SIFT ,SURF  
 3. 文字识别  ： OCR   pytessoract
-4. 图像修复 ：TM_CCOEFF
+4. 图像修复去水印 ：TM_CCOEFF
+
+
