@@ -92,22 +92,24 @@ if __name__=='__main__':
 
     img0new2=cv2.resize(img0new,(img1new.shape[1],img1new.shape[0]))
     
-    plt.imshow(img1new)
-    plt.show()
+    plt.figure(figsize=(12,8))
+    plt.subplot(2,4,1)
     plt.imshow(img0new2)
-    plt.show()
+    plt.subplot(2,4,2)
+    plt.imshow(img1new)
+    #plt.show()
     
     # 第一步 提取特征矩阵  (使用 sift 或surf )
     ## 若使用 sift
-    '''
+    
     kp1,des1,img11=keypoints_feature(imgx=img1new,method='sift')
     kp0,des0,img00=keypoints_feature(imgx=img0new2,method='sift')
-    plt.subplot(1,2,1)
+    plt.subplot(2,4,3)
     plt.imshow(img00)
-    plt.subplot(1,2,2)
+    plt.subplot(2,4,4)
     plt.imshow(img11)
     plt.suptitle('sift')
-    plt.show()
+    #plt.show()
     '''
     ## 若使用 surf
     
@@ -120,14 +122,19 @@ if __name__=='__main__':
     plt.imshow(img11)
     plt.suptitle('surf \n(setHessianThreshold={0})'.format(k))
     plt.show()
-    
+    '''
     
     # 第二步 计算特征矩阵相似度 
-    print(dtm.now())
     sim_mtx=npy.apply_along_axis(sim,1,des0)
-    print(dtm.now())
-    keypoints_sim,shape_sim=sim_total(sim_mtx,padding=True) 
+    print('提取的特征点数量分别为：',sim_mtx.shape)
+    padx=False
+    keypoints_sim,shape_sim=sim_total(sim_mtx,padding=padx) 
     sim_coef=keypoints_sim.mean()
-    print(sim_coef,shape_sim)
+    print('特征点相似度 及 特征点数量比例 分别为：',sim_coef,shape_sim)
+    plt.subplot(2,4,5)
+    plt.axis('off')
+    plt.subplot(2,4,(6,7))
     plt.hist(keypoints_sim)
+    plt.title('padding={0} \n特征点相似度 分布直方图'.format(padx))
+    plt.tight_layout()
     plt.show()
