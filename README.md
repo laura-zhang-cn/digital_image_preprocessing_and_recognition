@@ -1,13 +1,14 @@
 # digital_image_preprocessing_and_recognition
 all sub-algorithms  for the field of digital image preprocessing and recognition
 
+图像检测  物体/人脸识别 图像分割 图像生成 图像/视频内容理解
 
 This contains the following application scenarios:
 
-1 . 人脸特征点检测与跟踪  
-2 . 嘴眼睛的轮廓跟踪  
-3 . 虚拟化妆  
-4 . 文字识别  
+1 . 人脸特征点检测与跟踪
+2 . 嘴眼睛的轮廓跟踪  检查
+3 . 虚拟化妆
+4 . 文字识别  
 5 . 目标跟踪 ，模式识别  
 6 . 颜色识别  
 7 . 物体识别  
