@@ -43,4 +43,4 @@ padding=True  特征点多的图片，多余的无法找到最相似特征点�
 直接将logo 加到图片的目标位置：  
 ![directly](https://github.com/laura-zhang-cn/digital_image_preprocessing_and_recognition/blob/master/images/logo_add_directly.jpg)  
 使用bitwise operation ，先从图片目标位置抠出logo的黑色区域，然后将logo 加到图片的目标位置：  
-![base_on_bitwise](https://github.com/laura-zhang-cn/digital_image_preprocessing_and_recognition/blob/master/images/logo_add_baseon_bitwise.jpg)  
+![base_on_bitwise](https://github.com/laura-zhang-cn/digital_image_preprocessing_and_recognition/blob/master/images/logo_add_baseon_bitwise2.jpg)  
