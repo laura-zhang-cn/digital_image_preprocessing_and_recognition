@@ -9,9 +9,9 @@ This contains the following application scenarios:
 2 . 嘴眼睛的轮廓跟踪检查  
 3 . 虚拟化妆  
 4 . 文字识别   
-5 . 目标跟踪 ，模式识别  
-6 . 颜色识别  
-7 . 物体识别  
+5 . 物体识别  
+6 . 目标跟踪 ，模式识别  
+7 . 加logo  
 8 . 去水印  
 
 
@@ -39,4 +39,8 @@ padding=True  特征点多的图片，多余的无法找到最相似特征点�
 
 **4. 图像修复去水印 ：TM_CCOEFF**  
 
-
+**5. 加logo : bitwise operation**  
+直接将logo 加到图片的目标位置：  
+![directly]()  
+使用bitwise operation ，先从图片目标位置抠出logo的黑色区域，然后将logo 加到图片的目标位置：  
+![base_on_bitwise]()  
