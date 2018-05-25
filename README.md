@@ -8,7 +8,7 @@ This contains the following application scenarios:
 1 . 人脸特征点检测与跟踪  
 2 . 嘴眼睛的轮廓跟踪检查  
 3 . 虚拟化妆  
-4 . 文字识别   
+4 . 文字识别  
 5 . 物体识别  
 6 . 目标跟踪 ，模式识别  
 7 . 加logo  
