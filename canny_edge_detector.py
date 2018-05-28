@@ -3,6 +3,8 @@
 Created on Mon May 28 14:04:32 2018
 
 @author: zhangyaxu
+
+canny edge detector canny边缘检测算法
 """
 
 from matplotlib import pyplot as plt
