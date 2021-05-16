@@ -35,6 +35,11 @@
 # 运行   
 image number: 5500  
 per epoch : 6.5min   
-epochs=20 :2hours+
+epochs=20 :2hours+  
+# 结果    
+在当前数据集的质量和数量下，迭代20次生成的结果虽然还没有人的样子，但是每5次输出生成结果，可以发现模型一直在进步。
+有充足时间和质量比较高的数据集的朋友们，可以使用此模型自己去训练试试，相信可以获得不错的结果。
+![少量迭代观察](https://github.com/laura-zhang-cn/digital_image_preprocessing_and_recognition/blob/master/image_generate_DCGAN/imagesrst/generate_rst_epoch5_compare.png?raw=true)  
 
-
+# 附：数据集概览  
+![百度爬虫数据集解图]()
