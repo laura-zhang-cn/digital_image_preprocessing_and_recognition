@@ -31,7 +31,7 @@ def read_images_data(rs=112,batchsize=64):
     n=train_data.shape[0]
     train_data=train_data.reshape(n,rs,rs,1).astype('float32')
     scl=255/2
-    train_data=(train_data-scl)-scl #[-1,1]
+    train_data=(train_data-scl)/scl #[-1,1]
     #
     train_set=tf.data.Dataset.from_tensor_slices(train_data).shuffle(n).batch(batchsize)
     return train_set,error_imgs
