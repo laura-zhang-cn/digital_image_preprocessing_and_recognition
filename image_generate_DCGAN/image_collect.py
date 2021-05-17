@@ -89,18 +89,18 @@ if __name__=='__main__':
     write_path1='E:\\google_download\\image_baidu_urllib\\caixukun\\cxk_url.txt'
     f1=open(write_path1,'r').read()
     imgurls=f1.split('\n')
-    #3 根据image-urls,爬取图片并保存
+    #3 根据image-urls,爬取图片并保存,多次爬图片需要改一改写入的jpg文件名哦，避免覆盖
     error_urls=[]
     flp='E:\\google_download\\image_wang\\'
     for ix,imgurlx in enumerate(imgurls):
-        if re.search('ss[0-9]',imgurlx) and ix>=660:
+        if re.search('ss[0-9]',imgurlx) :
             try:
                 imgdt=urllib.request.urlopen(imgurlx).read()
-                with open(flp+str(ix)+'.jpg','wb') as f:
+                with open(flp+str(ix)+'_517.jpg','wb') as f:
                     f.write(imgdt)
             except:
                 error_urls.append((ix,imgurlx))
-        if ix%10==0 and ix>=660:
+        if ix%10==0 :
             time.sleep(random.randint(3,10))
         
     
