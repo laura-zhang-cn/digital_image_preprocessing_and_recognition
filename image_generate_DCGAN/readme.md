@@ -10,7 +10,7 @@
 3. **create_DCGAN.py**  
 核心运行文件  
 **生成器共6层**：  
-> 全连接层 & 维度转换: 300--> 7,7,256  
+> 全连接层 & 维度转换: 1000--> 7,7,256  
 > 转置卷积1:   
 > &ensp;&ensp;filter=128,kernel_size=(5,5),s=(1,1),activation=带泄露的ReLU(后2到4层同)   outputsize=7,7,128  
 > 转置卷积2：  
@@ -33,11 +33,11 @@
 > 输出层：输出1个值      
 
 # 运行   
-image number: 5500  
-per epoch : 6.5min   
-epochs=20 :2hours+  
+image number: ≈9000  
+per epoch : 10mins+   
+epochs=100 :20hours+  
 # 结果    
-在当前数据集的质量和数量下，迭代20次生成的结果虽然还没有人的样子，但是每5次输出生成结果，可以发现模型一直在进步。  
+在当前数据集的质量和数量下，迭代100次生成的结果虽然还没有人的样子，但是每20次输出生成结果，可以发现模型一直在进步。  
 有充足时间和质量比较高的数据集的朋友们，可以使用此模型自己去训练试试，相信可以获得不错的结果。
 ![少量迭代观察](https://github.com/laura-zhang-cn/digital_image_preprocessing_and_recognition/blob/master/image_generate_DCGAN/imagesrst/generate_rst_epoch5_compare.png?raw=true)  
 
