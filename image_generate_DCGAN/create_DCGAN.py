@@ -82,7 +82,7 @@ def define_discriminator_model():
     #第四层：扁平化展开
     model.add(Flatten()) 
     #第五层：输出层，1位 ，是，或者不是
-    model.add(Dense(1))
+    model.add(Dense(1,activation='sigmoid'))
 
     return model
 
@@ -90,7 +90,7 @@ def define_discriminator_model():
 
     
 if __name__=='__main__':
-    k=300
+    k=1000
     #1 生成器生成一个图
     g_mdl=define_generator_model(k=k)
     noise=npy.random.normal(0,1.0,k).reshape(1,-1) 
@@ -117,11 +117,11 @@ if __name__=='__main__':
         return gloss
     
     #4 优化方法optimizer 
-    g_optimizer=optimizers.Adam(1e-4)
-    d_optimizer=optimizers.Adam(1e-4)
+    g_optimizer=optimizers.Adam(1e-3)
+    d_optimizer=optimizers.Adam(1e-3)
     
     #保存模型
-    checkpoint_dir = './training_checkpoints1000'
+    checkpoint_dir = './training_checkpoints100'
     checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt")
     checkpoint = tf.train.Checkpoint(generator_optimizer=g_optimizer,
                                      discriminator_optimizer=d_optimizer,
@@ -129,8 +129,8 @@ if __name__=='__main__':
                                      discriminator=d_mdl)
 
     #5 训练
-    epoch=20
-    k=300 # noise dim
+    epoch=100
+    k=1000 # noise dim
     g_examples=3 # generate examples' number
     BATCH_SIZE = 64 # 真实dataset的批大小
     seedx=tf.random.normal([g_examples,k]) # [-1,1]
@@ -163,8 +163,8 @@ if __name__=='__main__':
             for image_batch in dataset:
                 #print('batch is ',i);i+=1
                 train_step(image_batch)
-            if (epochx+1)%5==0:
-                g_imgx=g_mdl(seedx,training=False) # 每100次迭代生成3张图片进行观察
+            if (epochx+1)%20==0:
+                g_imgx=g_mdl(seedx,training=False) # 每20次迭代生成3张图片进行观察
                 g_imgs.append(g_imgx)
                 checkpoint.save(file_prefix=checkpoint_prefix) # 保存模型
                 #print('epoch {0} run time: {1}s'.format(epochx+1,dtm.now()-st))
@@ -178,8 +178,11 @@ if __name__=='__main__':
     for ix,gx in enumerate(g_imgs):
         for jx in range(gx.shape[0]):
             plt.subplot(rows,cols,ix*3+jx+1)
-            plt.imshow(gx[jx,:,:,0]*225/2+225/2,cmap='gray')
-            plt.axis('off')
+            plt.imshow(gx[jx,:,:,0]*225/2+225/2) #,cmap='gray'
+            if jx==1:
+                plt.title('←  this row results is epoch {}   →'.format((ix+1)*20),fontsize=16)
+    plt.suptitle('epochs  compare ',fontsize=20)
+    plt.tight_layout(5)
     plt.show()
     
     #checkpoint.restore(tf.train.latest_checkpoint(checkpoint_dir)) #调用最近一次保存的模型
